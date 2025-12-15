@@ -13,19 +13,24 @@ class BaseHome extends StatelessWidget {
       appBar: GetIt.I<BaseAppbar>(),
       body: Column(
         children: [
-          TextButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => GetIt.I<BaseContentScreen>(),
-                ),
-              );
-            },
-            child: Text("content"),
-          ),
+          for (final c in contents)
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GetIt.I<BaseContentScreen>(param1: c),
+                  ),
+                );
+              },
+              child: Text(c),
+            ),
         ],
       ),
     );
+  }
+
+  List<String> get contents {
+    return [];
   }
 }
